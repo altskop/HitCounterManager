@@ -552,6 +552,8 @@ namespace AutoSplitterCore
         public bool enableSplitting = false;
         public bool autoTimer = false;
         public bool gameTimer = false;
+        public bool enableAutoHitDetection = true;
+
         public int PantheonMode = 0;
         public int positionMargin = 5;
         //Flags to Split

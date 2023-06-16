@@ -44,7 +44,11 @@ namespace AutoSplitterCore
         private System.Windows.Forms.Timer _update_timer = new System.Windows.Forms.Timer() { Interval = 1000 };
         public bool DebugMode = false;
         public bool _PracticeMode = false;
+        public bool _AutoHit = true;
         public bool _ShowSettings = false;
+
+        public int lastHealth = 0;
+        public int currentHealth;
 
         #region Control Management
         public DTHollow getDataHollow()
@@ -251,6 +255,11 @@ namespace AutoSplitterCore
                 RefreshPosition();
             });
 
+            var taskRefreshHealth = new Task(() =>
+            {
+                RefreshHealth();
+            });
+
             var taskCheckStart = new Task(() =>
             {
                 checkStart();
@@ -288,6 +297,7 @@ namespace AutoSplitterCore
 
             taskRefresh.Start();
             taskRefreshPosition.Start();
+            taskRefreshHealth.Start();
             taskCheckStart.Start();
             task1.Start();
             task2.Start();
@@ -351,6 +361,23 @@ namespace AutoSplitterCore
                         currentPosition.previousScene = currentPosition.sceneName;
                         currentPosition.sceneName = hollow.Memory.SceneName();
                     }
+                }
+            }
+        }
+
+        private void RefreshHealth()
+        {     
+            while (this._AutoHit)
+            {
+                Thread.Sleep(10);
+                if (_StatusHollow && hollow.Memory.GameState() == GameState.PLAYING && _runStarted)
+                {
+                    currentHealth = hollow.Memory.Health();
+                    if (currentHealth < lastHealth)
+                    {
+                        try { _profile.ProfileHit(+1); } catch (Exception) { }
+                    }
+                    lastHealth = currentHealth;
                 }
             }
         }

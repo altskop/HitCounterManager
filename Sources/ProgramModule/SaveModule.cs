@@ -42,6 +42,7 @@ namespace AutoSplitterCore
         //Settings
         public bool CheckUpdatesOnStartup = true;
         public bool PracticeMode = false;
+        public bool AutoHit = false;
         public bool ASLMethod = false;
         //AutoSplitters Config
         public DTSekiro DataSekiro;
@@ -63,6 +64,7 @@ namespace AutoSplitterCore
     {
         public DataAutoSplitter dataAS = new DataAutoSplitter();
         public bool _PracticeMode = false;
+        public bool _AutoHit = false;
         public bool _DebugMode = false;
         private SekiroSplitter sekiroSplitter = null;
         private Ds1Splitter ds1Splitter = null;
@@ -110,6 +112,7 @@ namespace AutoSplitterCore
             dataAS.DataDishonored = dishonoredSplitter.getDataDishonored();
             dataAS.ASLMethod = aslSplitter.enableSplitting;
             dataAS.PracticeMode = _PracticeMode;
+            dataAS.AutoHit = _AutoHit;
             dataAS.CheckUpdatesOnStartup = updateModule.CheckUpdatesOnStartup;
         }
 
@@ -194,6 +197,7 @@ namespace AutoSplitterCore
             if (dataDishonored == null) { dataDishonored = new DTDishonored(); }
 
             _PracticeMode = dataAS.PracticeMode;
+            _AutoHit = dataAS.AutoHit;
             updateModule.CheckUpdatesOnStartup = dataAS.CheckUpdatesOnStartup;
             aslSplitter.enableSplitting = dataAS.ASLMethod;
             sekiroSplitter.setDataSekiro(dataSekiro, profiles);

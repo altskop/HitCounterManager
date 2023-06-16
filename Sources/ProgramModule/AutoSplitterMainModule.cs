@@ -52,6 +52,7 @@ namespace AutoSplitterCore
         public Debug debugForm;
         public bool DebugMode = false;
         public bool _PracticeMode = false;
+        public bool _AutoHit = false;
         public bool _ShowSettings = false;
         public Form1 main;
         private ProfilesControl profCtrl;
@@ -152,6 +153,17 @@ namespace AutoSplitterCore
             cupSplitter._PracticeMode = status;
             dishonoredSplitter._PracticeMode = status;
             aslSplitter._PracticeMode = status;
+        }
+
+        public bool GetAutoHit()
+        {
+            return saveModule._AutoHit;
+        }
+
+        public void SetAutoHit(bool status){
+            _AutoHit = status;
+            saveModule._AutoHit = status;
+            hollowSplitter._AutoHit = status;
         }
 
         public void SetShowSettings(bool status)

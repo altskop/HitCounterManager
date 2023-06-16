@@ -82,11 +82,13 @@ namespace AutoSplitterCore
                     currentVer = dll.GetName().Version.ToString();
                     currentVersionNotDot = currentVer;
                     currentVersionNotDot = currentVersionNotDot.Remove(currentVersionNotDot.LastIndexOf(".0"));
+                    currentVer = currentVer + ".alt";
                 }
                 else
                 {
                     currentVer = Application.ProductVersion.ToString() + ".0";
                     currentVersionNotDot = Application.ProductVersion.ToString();
+                    currentVer = currentVer + ".alt";
                 }
 
                 //SoulsMemory GetVersions

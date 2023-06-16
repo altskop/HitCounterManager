@@ -52,6 +52,7 @@ namespace AutoSplitterCore
         {
             comboBoxIGTConversion.SelectedIndex = 1;
             checkBoxPracticeMode.Checked = mainModule.GetPracticeMode();
+            checkBoxAutoHit.Checked = mainModule.GetAutoHit();
             List<string> GameList = mainModule.GetGames();
             foreach (string i in GameList) comboBoxGame.Items.Add(i);
             switch (mainModule.GetSplitterEnable())
@@ -86,6 +87,7 @@ namespace AutoSplitterCore
         {
             comboBoxGame.SelectedIndex = mainModule.GetSplitterEnable();
             checkBoxPracticeMode.Checked = mainModule.GetPracticeMode();
+            checkBoxAutoHit.Checked = mainModule.GetAutoHit();
         }
 
         bool debugSplit = false;
@@ -147,6 +149,8 @@ namespace AutoSplitterCore
                     this.textBoxX.Paste(Vector6.X.ToString("0.00"));
                     this.textBoxY.Paste(Vector6.Y.ToString("0.00"));
                     this.textBoxSceneName.Paste(mainModule.hollowSplitter.currentPosition.sceneName.ToString());
+                    // update health label text to "Health: " + health + ", lastHealth: " + lastHealth + ", hits: " + _profile.SelectedProfileInfo.GetSplitWayHits();
+                    this.healthLabel.Text = "Health: " + mainModule.hollowSplitter.currentHealth + ", lastHealth: " + mainModule.hollowSplitter.lastHealth + ", hits: " + mainModule.hollowSplitter._profile.SelectedProfileInfo.ProfileName;
                     status = mainModule.hollowSplitter._StatusHollow;
                     debugSplit = mainModule.hollowSplitter._SplitGo;
                     break;
@@ -277,6 +281,11 @@ namespace AutoSplitterCore
         private void checkBoxPracticeMode_CheckedChanged(object sender, EventArgs e)
         {
             mainModule.SetPracticeMode(checkBoxPracticeMode.Checked);
+        }
+
+        private void checkBoxAutoHit_CheckedChanged(object sender, EventArgs e)
+        {
+            mainModule.SetAutoHit(checkBoxAutoHit.Checked);
         }
 
         private void btnStatusSplitting_Click(object sender, EventArgs e)

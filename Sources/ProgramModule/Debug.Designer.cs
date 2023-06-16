@@ -49,6 +49,7 @@
             this.NotRunning = new System.Windows.Forms.Label();
             this.btnRefreshGame = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.healthLabel = new System.Windows.Forms.Label();
             this.textBoxSceneName = new System.Windows.Forms.TextBox();
             this.comboBoxIGTConversion = new System.Windows.Forms.ComboBox();
             this.textBoxIGT = new System.Windows.Forms.TextBox();
@@ -59,6 +60,7 @@
             this.textBoxY = new System.Windows.Forms.TextBox();
             this.textBoxX = new System.Windows.Forms.TextBox();
             this.checkBoxPracticeMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoHit = new System.Windows.Forms.CheckBox();
             this.checkBoxAutoToggle = new System.Windows.Forms.CheckBox();
             this.btnResetFlags = new System.Windows.Forms.Button();
             this.groupBoxDebug.SuspendLayout();
@@ -154,6 +156,7 @@
             this.groupBoxDebug.Controls.Add(this.NotRunning);
             this.groupBoxDebug.Controls.Add(this.btnRefreshGame);
             this.groupBoxDebug.Controls.Add(this.label3);
+            this.groupBoxDebug.Controls.Add(this.healthLabel);
             this.groupBoxDebug.Controls.Add(this.textBoxSceneName);
             this.groupBoxDebug.Controls.Add(this.comboBoxIGTConversion);
             this.groupBoxDebug.Controls.Add(this.textBoxIGT);
@@ -298,6 +301,17 @@
             this.textBoxSceneName.Name = "textBoxSceneName";
             this.textBoxSceneName.Size = new System.Drawing.Size(123, 20);
             this.textBoxSceneName.TabIndex = 58;
+
+            // 
+            // healthLabel
+            // 
+            this.healthLabel.AutoSize = true;
+            this.healthLabel.Location = new System.Drawing.Point(4, 132);
+            this.healthLabel.Name = "healthLabel";
+            this.healthLabel.Size = new System.Drawing.Size(69, 13);
+            this.healthLabel.TabIndex = 59;
+            this.healthLabel.Text = "Health: ";
+
             // 
             // comboBoxIGTConversion
             // 
@@ -372,13 +386,27 @@
             // 
             this.checkBoxPracticeMode.AutoSize = true;
             this.checkBoxPracticeMode.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.checkBoxPracticeMode.Location = new System.Drawing.Point(117, 50);
+            this.checkBoxPracticeMode.Location = new System.Drawing.Point(0, 50);
             this.checkBoxPracticeMode.Name = "checkBoxPracticeMode";
             this.checkBoxPracticeMode.Size = new System.Drawing.Size(95, 17);
             this.checkBoxPracticeMode.TabIndex = 67;
             this.checkBoxPracticeMode.Text = "Practice Mode";
             this.checkBoxPracticeMode.UseVisualStyleBackColor = true;
             this.checkBoxPracticeMode.CheckedChanged += new System.EventHandler(this.checkBoxPracticeMode_CheckedChanged);
+
+            // 
+            // checkBoxAutoHitMode
+            // 
+            this.checkBoxAutoHit.AutoSize = true;
+            this.checkBoxAutoHit.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.checkBoxAutoHit.Location = new System.Drawing.Point(117, 50);
+            this.checkBoxAutoHit.Name = "checkBoxAutoHit";
+            this.checkBoxAutoHit.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxAutoHit.TabIndex = 67;
+            this.checkBoxAutoHit.Text = "Auto Hit Detection";
+            this.checkBoxAutoHit.UseVisualStyleBackColor = true;
+            this.checkBoxAutoHit.CheckedChanged += new System.EventHandler(this.checkBoxAutoHit_CheckedChanged);
+
             // 
             // checkBoxAutoToggle
             // 
@@ -410,6 +438,7 @@
             this.Controls.Add(this.btnResetFlags);
             this.Controls.Add(this.checkBoxAutoToggle);
             this.Controls.Add(this.checkBoxPracticeMode);
+            this.Controls.Add(this.checkBoxAutoHit);
             this.Controls.Add(this.groupBoxDebug);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStatusSplitting);
@@ -444,6 +473,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnRefreshGame;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label healthLabel;
         private System.Windows.Forms.TextBox textBoxSceneName;
         private System.Windows.Forms.ComboBox comboBoxIGTConversion;
         private System.Windows.Forms.TextBox textBoxIGT;
@@ -456,6 +486,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxCfID;
         private System.Windows.Forms.CheckBox checkBoxPracticeMode;
+        private System.Windows.Forms.CheckBox checkBoxAutoHit;
         private System.Windows.Forms.Label labelCloudVer;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label LabelVersion;
